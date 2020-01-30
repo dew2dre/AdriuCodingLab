@@ -1,0 +1,10 @@
+
+Create a new file
+=================
+1. Open command prompt.
+2. Navigate to CommandExe folder using cd(change directory)
+example. You are in C:
+    1. to change to D drive you type and enter D:
+  so to go to the required folder you type cd folder/subfolder
+    2. To check folders in your current location type dir/w
+3. To file type copy con MyFirstCommandCreate.txt
