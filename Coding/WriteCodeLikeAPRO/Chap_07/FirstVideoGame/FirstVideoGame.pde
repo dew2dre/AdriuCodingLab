@@ -2,6 +2,10 @@ PImage character;
 int characterX = 0;
 int characterY = 300;
 
+PImage enemy;
+int enemyX = 350;
+int enemyY = 325;
+
 void setup ()
 {
  // Canvas 
@@ -13,6 +17,10 @@ void setup ()
   //Create the character
     character = loadImage("penguin.png");
   image(character,characterX,characterY);
+  
+  //Create the enemy
+  enemy = loadImage("crab.png");
+  image(enemy,enemyX,enemyY);
 }
   
   void drawScene()
@@ -48,13 +56,19 @@ void draw()
   //Re-draw the character
   image(character,characterX,characterY);
 
-text(characterX,characterX + 60,characterY - 5);
+//Re-draw the enemy
+image(enemy,enemyX,enemyY);
+
+//text(characterX,characterX + 60,characterY - 5);
 
 //Check to see if the character hit the lava
 if((characterX >= 150 && characterX <= 310) || (characterX >= 450 && characterX <= 610))
 {
-
+text("OW!", characterX + 60,characterY - 5);
 }
+
+//Re-draw the enemy
+image(enemy,enemyX,enemyY);
 }
 
 void keyPressed ()
