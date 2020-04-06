@@ -2,9 +2,7 @@ PImage character;
 int characterX = 0;
 int characterY = 300;
 
-PImage enemy;
-int enemyX = 350;
-int enemyY = 325;
+Enemy enemy1;
 
 void setup ()
 {
@@ -18,9 +16,8 @@ void setup ()
     character = loadImage("penguin.png");
   image(character,characterX,characterY);
   
-  //Create the enemy
-  enemy = loadImage("crab.png");
-  image(enemy,enemyX,enemyY);
+ // Create  the enemy
+enemy1 = new Enemy(); 
 }
   
   void drawScene()
@@ -56,9 +53,6 @@ void draw()
   //Re-draw the character
   image(character,characterX,characterY);
 
-//Re-draw the enemy
-image(enemy,enemyX,enemyY);
-
 //text(characterX,characterX + 60,characterY - 5);
 
 //Check to see if the character hit the lava
@@ -68,7 +62,7 @@ text("OW!", characterX + 60,characterY - 5);
 }
 
 //Re-draw the enemy
-image(enemy,enemyX,enemyY);
+enemy1.move(350,450); 
 }
 
 void keyPressed ()
@@ -83,5 +77,34 @@ void keyPressed ()
   } else if(key == ' ')
   {
    characterY = characterY - 100;
+  }
+}
+
+class Enemy
+{
+PImage enemy;
+int enemyX = 350;
+int enemyY = 325;
+
+int enemyMovement = 1;
+
+  Enemy()
+  {
+    enemy = loadImage("crab.png");
+    image(enemy,enemyX,enemyY);
+  }
+void move (int leftX,int rightX){
+  //Re-draw the enemy
+  image(enemy,enemyX,enemyY); 
+    //Move enemy
+    if(enemyX == leftX)
+    {
+      enemyMovement = 1;
+    }
+    else if(enemyX == rightX)
+    {
+      enemyMovement = -1;
+    }
+  enemyX = enemyY + enemyMovement;
   }
 }
