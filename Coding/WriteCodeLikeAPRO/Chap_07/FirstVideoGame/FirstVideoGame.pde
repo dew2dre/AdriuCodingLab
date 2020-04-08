@@ -1,8 +1,7 @@
-PImage character;
-int characterX = 0;
-int characterY = 300;
+Character character;
 
 Enemy enemy1;
+Enemy enemy2;
 
 void setup ()
 {
@@ -11,13 +10,13 @@ void setup ()
   
   //Draw the sky,grass,and hills
   drawScene();
-  
-  //Create the character
-    character = loadImage("penguin.png");
-  image(character,characterX,characterY);
-  
- // Create  the enemy
-enemy1 = new Enemy(); 
+
+//Create the character
+
+
+ // Create  the enemies
+enemy1 = new Enemy(350,325);
+enemy2 = new Enemy(650,325);
 }
   
   void drawScene()
@@ -36,8 +35,6 @@ enemy1 = new Enemy();
   arc(300,400,100,150,0,PI);
   arc(600,400,100,150,0,PI);
  
-  character = loadImage("penguin.png");
-  image(character,0,300);
 }
 
 void draw()
@@ -60,9 +57,9 @@ if((characterX >= 150 && characterX <= 310) || (characterX >= 450 && characterX 
 {
 text("OW!", characterX + 60,characterY - 5);
 }
-
 //Re-draw the enemy
-enemy1.move(350,450); 
+enemy1.move(350, 450);
+enemy2.move(650, 900);
 }
 
 void keyPressed ()
@@ -88,8 +85,10 @@ int enemyY = 325;
 
 int enemyMovement = 1;
 
-  Enemy()
+  Enemy(int x,int y)
   {
+    enemyX = x;
+    enemyY = y;
     enemy = loadImage("crab.png");
     image(enemy,enemyX,enemyY);
   }
@@ -107,4 +106,21 @@ void move (int leftX,int rightX){
     }
   enemyX = enemyY + enemyMovement;
   }
+}
+
+class Character
+{
+  PImage character;
+int characterX = 0;
+int characterY = 300;
+
+Character (int x,int y
+{
+  characterX = x;
+  characterY = y;
+  //Create the character
+    character = loadImage("penguin.png");
+  image(character,characterX,characterY);
+  
+}
 }
