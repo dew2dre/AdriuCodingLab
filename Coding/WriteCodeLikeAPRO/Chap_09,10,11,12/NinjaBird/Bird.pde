@@ -27,25 +27,24 @@ void endSequence()
 {
 
 }
-//method 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//Method to return the x-coordinate
+int getX()
+{
+  return 0;
+}
+  //Method to return the y-coordinate
+int getY()
+{
+  return 0;
+} 
+//Method to return the width of the bird
+int getWidth()
+{
+  return 0;
+}
+//Method to return the height of the bird
+int getHeight()
+{
+  return 0;
+}
 }
