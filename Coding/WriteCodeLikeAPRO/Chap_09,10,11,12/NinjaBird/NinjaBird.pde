@@ -1,17 +1,22 @@
-//Two variables that keep track of current and best score
+ //Two variables that keep track of current and best score
 
 //Variable that keeps track of the state of the game
 
 //Variables for the bird and two sets of pipes
-
+Bird bird ;
+Pipes pipes ;
+Pipes pipes2 ;
 //Method to set up the background
 void setup ()
 {
  //Create an 800-x-800-pixel canvas
- 
+ size (800,800);
  //Call the drawScene method
- 
+ drawScene();
  //Calls the constructors for the bird and two sets of pipes
+ bird = new Bird ();
+ pipes = new Pipes(500,-300,500,500 );
+ pipes2 = new Pipes(0,-300,0,500 );
 }
 
 //Method to constantly draw the bird,pipes,
@@ -19,30 +24,53 @@ void setup ()
 void draw ()
 {
   //Call the drawScene method
-  
+  drawScene();
   //Call the bird move method to re-draw the bird
-  
+  bird.move();
   //Call the pipes move method for both sets of pipes to re-draw the pipes
-  
+  pipes.move();
+  pipes2.move();
   //Conditional statement to check if the bird hits the pipes
+  if(checkCollision())
+  {
+  text("YES", bird.getX() + 60,bird.getY() - 5);
+  }
+  else
+  {
+    text("NO", bird.getX() + 60,bird.getY() - 5);
+  }
 }
+
 //Method to check to to seeif the bird has hit any of the pipes
 boolean checkCollision ()
 {
-  //Get the location, width and, height of the bird
-  
-  //Get the location, width and, height of both sets of pipes
-  
-  //Conditional statement to check if the birdis in the same location as the pipes
-  
+int birdRightX = bird.getX() + bird.getWidth()/2;
+int birdTopY = bird.getY() - bird.getHeight()/2;
+int birdBottomY = bird.getY() + bird.getHeight()/2;
+if(pipes. checkIfHit(birdRightX, birdTopY, birdBottomY)|| pipes2.checkIfHit(birdRightX, birdTopY, birdBottomY))
+{
+  return true;
+}
   return false;
 }
+
+//Call the mouseClicked button for the bird when the mouse is clicked
+void mouseClicked ()
+{
+ bird.mouseClicked ();
+}
+
 //Method to draw the bacground color, grass, and city image
 void drawScene()
 {
 //Turn the background of the canvas blue
-
+background(173,216,230);
  //Create a green rectangle that spans across the bottom of the canvas
+ stroke(0,255,0);
+ fill(0,255,0);
+ rect(0,700,1000,1000);
  
- //Create an image that represents the city
+//Create a image that represents the city
+PImage city = loadImage("cityscape.png");
+image(city,0,260);
 }
