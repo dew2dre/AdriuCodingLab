@@ -14,7 +14,6 @@ int height = bird.height;
 Bird ()
 {
   
-  
   //Draw the bird in on the canvas
   image(bird,xCoordinate,yCoordinate);
 }
@@ -39,11 +38,6 @@ void mouseClicked ()
   yCoordinate = yCoordinate - 75;
 }
 
-//Method to make the bird hit the floor
-void endSequence()
-{
-
-}
 //Method to return the x-coordinate
 int getX()
 {
