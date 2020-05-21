@@ -31,9 +31,9 @@ void draw ()
   pipes.move();
   pipes2.move();
   
- textSize(32); 
+   textSize(32); 
  fill(0,102,153,204);
-  
+
 //Keep checking to see if the bird should get another point
 trackScore();
 text(currentScore, bird.getX() + 60,bird.getY() - 5);
@@ -43,7 +43,7 @@ text(currentScore, bird.getX() + 60,bird.getY() - 5);
   {
    if(currentScore > bestScore)  
    {
-    bestScore = currentScore;
+    bestScore = 0;//currentScore + 0;
     currentScore = 0;
    }
   }
@@ -57,10 +57,9 @@ int birdRightX = bird.getX() + bird.getWidth()/2;
 int birdTopY = bird.getY() - bird.getHeight()/2;
 int birdBottomY = bird.getY() + bird.getHeight()/2;  
   
-if(pipes.checkIfPassed(birdRightX, birdTopY, birdBottomY)|| pipes2.checkIfHit(birdRightX, birdTopY, birdBottomY))  
+if(pipes.checkIfPassed(birdRightX, birdTopY, birdBottomY)|| pipes2.checkIfPassed(birdRightX, birdTopY, birdBottomY))  
   {
-  currentScore =  currentScore   + 1;
-  }
+  currentScore++;  }
 } 
 //Method to check to to seeif the bird has hit any of the pipes
 boolean checkCollision()
@@ -68,14 +67,13 @@ boolean checkCollision()
 int birdRightX = bird.getX() + bird.getWidth()/2;
 int birdTopY = bird.getY() - bird.getHeight()/2;
 int birdBottomY = bird.getY() + bird.getHeight()/2;
-/*
-if(pipes. checkIfHit(birdRightX, birdTopY, birdBottomY)|| pipes2.checkIfHit(birdRightX, birdTopY, birdBottomY))
+return pipes.checkIfHit(birdRightX, birdTopY, birdBottomY)|| pipes2.checkIfHit(birdRightX, birdTopY, birdBottomY);
+/*if(pipes.checkIfHit(birdRightX, birdTopY, birdBottomY)|| pipes2.checkIfHit(birdRightX, birdTopY, birdBottomY))
 {
   return true;
 }
-  return false;
-}*/
-return pipes. checkIfHit(birdRightX, birdTopY, birdBottomY)|| pipes2.checkIfHit(birdRightX, birdTopY, birdBottomY);
+  return false;*/
+
 }
 //Call the mouseClicked button for the bird when the mouse is clicked
 void mouseClicked ()
