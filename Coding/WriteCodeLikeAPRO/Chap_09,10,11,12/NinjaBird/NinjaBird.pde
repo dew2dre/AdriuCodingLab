@@ -43,7 +43,7 @@ text(currentScore, bird.getX() + 60,bird.getY() - 5);
   {
    if(currentScore > bestScore)  
    {
-    bestScore = 0;//currentScore + 0;
+    bestScore = currentScore + 0;
     currentScore = 0;
    }
   }
